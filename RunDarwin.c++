@@ -12,7 +12,10 @@
 #include <cstdlib>   // rand, srand
 #include <iostream>  // cout, endl
 #include <stdexcept> // invalid_argument, out_of_range
+#include <string>    // string
 #include "Darwin.c++"  //Darwin Class
+
+#define DEBUG_SPECIES true
 
 // ----
 // main
@@ -30,7 +33,10 @@ int main ()
      0: left
      1: go 0
     */
-
+	Species Food({"left","go 0"},'f',"Food");
+	#if DEBUG_SPECIES
+	Food.print_program();
+	#endif
     // ------
     // hopper
     // ------
@@ -39,7 +45,10 @@ int main ()
      0: hop
      1: go 0
     */
-
+	Species Hopper({"hop","go 0"},'h',"Hopper");
+	#if DEBUG_SPECIES
+	Hopper.print_program();
+	#endif
     // -----
     // rover
     // -----
@@ -57,7 +66,14 @@ int main ()
      9: infect
     10: go 0
     */
-
+	Species Rover({"if_enemy 9","if_empty 7","if_random 5","left",
+					"go 0","right","go 0","hop","go 0","infect",
+					"go 0"},'r',"Rover");
+	#if DEBUG_SPECIES
+	Rover.print_program();
+	#endif	
+	
+	
     // ----
     // trap
     // ----
@@ -69,12 +85,19 @@ int main ()
      3: infect
      4: go 0
     */
+	Species Trap({"if_enemy 3","left","go 0","infect","go 0"},'t',"Trap");
+	#if DEBUG_SPECIES
+	Trap.print_program();
+	#endif	
 
     // ----------
     // darwin 8x8
     // ----------
 
     cout << "*** Darwin 8x8 ***" << endl;
+	
+	
+	
     /*
     8x8 Darwin
     Food,   facing east,  at (0, 0)

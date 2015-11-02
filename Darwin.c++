@@ -7,7 +7,7 @@ void Darwin<N,M>::print_grid()
 	#if DEBUG_GRID
 	for(int i = 0; i < size; i++)
 	{
-		printf("Absolute spot %d is %c\n",i,grid[i]);
+		printf("Absolute spot %d is %c\n",i,symbol_grid[i]);
 	}
 	#endif
 	
@@ -25,7 +25,7 @@ void Darwin<N,M>::print_grid()
 		printf("%d",mod);
 		for(int j = 0; j < M; j++)
 		{
-			printf("%c",grid[(i*N)+j]);
+			printf("%c",symbol_grid[(i*N)+j]);
 		}
 		printf("\n");
 	}
