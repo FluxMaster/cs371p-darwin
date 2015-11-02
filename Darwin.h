@@ -50,7 +50,10 @@ class Creature
 			y_loc = y;
 			dir = d;
 		}
-		Creature(){}
+		Creature()
+		{
+				spec = NULL;
+		}
 };
 
 template <std::size_t N, std::size_t M>
