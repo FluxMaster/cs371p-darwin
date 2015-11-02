@@ -5,9 +5,10 @@
 #include <algorithm> // fill
 #include <string>    // string
 #include <vector>    // vector
-#include <iostream>  // cout
+#include <sstream>   // ostringstream
 
 using namespace std;
+
 
 class Species
 {
@@ -22,6 +23,10 @@ class Species
 			program = p;
 			name = n;
 		};
+		char render()
+		{
+			return symbol;
+		}
 		//debug
 		void print_program()
 		{
@@ -34,27 +39,45 @@ class Species
 		}
 };
 
+inline ostream& operator<<(ostream& os, Species& s)
+{ 
+	os << s.render();
+	return os;
+}
+
 class Creature
 {
 	private:
 		Species* spec;
 		int pc = 0;
 		int dir; /* 0-N 1-E 2-S 3-W */
-		int x_loc;
-		int y_loc;
 	public:
-		Creature(Species s, int x, int y, int d)
+		Creature(Species s, int d)
 		{
 			spec = &s;
-			x_loc = x;
-			y_loc = y;
 			dir = d;
+		}
+		char render()
+		{
+			ostringstream os;
+			os << *spec;
+			string str = os.str();
+			const char* chr = str.c_str();
+			//printf("chr[0]:%c\n",chr[0]);
+			return chr[0];
 		}
 		Creature()
 		{
 				spec = NULL;
 		}
 };
+
+inline ostream& operator<<(ostream& os, Creature& c)
+{ 
+	os << c.render();
+	return os;
+}
+
 
 template <std::size_t N, std::size_t M>
 class Darwin
@@ -70,6 +93,7 @@ class Darwin
 			size = N*M;
 		};
 		void print_grid();
+		void add_creature(Creature c, int location);
 		
 		
 		

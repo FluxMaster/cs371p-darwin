@@ -1,6 +1,9 @@
 #include "Darwin.h"
 #define DEBUG_GRID FALSE
 
+
+
+
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::print_grid()
 {
@@ -29,4 +32,19 @@ void Darwin<N,M>::print_grid()
 		}
 		printf("\n");
 	}
+}
+
+template <std::size_t N, std::size_t M>
+void Darwin<N,M>::add_creature(Creature c, int location)
+{
+	//int n = location / N;
+	//int m = location % N;
+	//printf("Location: %d n: %d m: %d \n",location,n,m);
+	creature_grid[location] = c;
+	
+	ostringstream os;
+	os << c;
+	string str = os.str();
+	const char* chr = str.c_str();
+	symbol_grid[location] = chr[0];
 }

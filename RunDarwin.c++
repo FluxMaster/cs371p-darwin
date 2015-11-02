@@ -15,7 +15,7 @@
 #include <string>    // string
 #include "Darwin.c++"  //Darwin Class
 
-#define DEBUG_SPECIES true
+#define DEBUG_SPECIES false
 
 // ----
 // main
@@ -95,9 +95,6 @@ int main ()
     // ----------
 
     cout << "*** Darwin 8x8 ***" << endl;
-	
-	
-	
     /*
     8x8 Darwin
     Food,   facing east,  at (0, 0)
@@ -109,7 +106,22 @@ int main ()
     Simulate 5 moves.
     Print every grid.
     */
+	vector<Creature> run1;
+	run1.push_back(Creature(Food,1));
+	run1.push_back(Creature(Hopper,0));
+	run1.push_back(Creature(Hopper,1));
+	run1.push_back(Creature(Hopper,2));
+	run1.push_back(Creature(Hopper,3));
+	run1.push_back(Creature(Food,0));
+	
 	Darwin<8,8> dar1;
+	dar1.add_creature(run1[0],0);
+	dar1.add_creature(run1[1],27);
+	dar1.add_creature(run1[2],28);
+	dar1.add_creature(run1[3],36);
+	dar1.add_creature(run1[4],35);
+	dar1.add_creature(run1[5],63);
+	
 	dar1.print_grid();
 
     // ----------
@@ -127,8 +139,9 @@ int main ()
     Simulate 5 moves.
     Print every grid.
     */
-	Darwin<7,9> dar2;
-	dar2.print_grid();
+	
+	//Darwin<7,9> dar2;
+	//dar2.print_grid();
 
     // ------------
     // darwin 72x72
