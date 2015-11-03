@@ -37,6 +37,7 @@ void Darwin<N,M>::print_grid()
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::add_creature(Creature c, int location)
 {
+	
 	//int n = location / N;
 	//int m = location % N;
 	//printf("Location: %d n: %d m: %d \n",location,n,m);
@@ -47,4 +48,17 @@ void Darwin<N,M>::add_creature(Creature c, int location)
 	string str = os.str();
 	const char* chr = str.c_str();
 	symbol_grid[location] = chr[0];
+}
+
+template <std::size_t N, std::size_t M>
+void Darwin<N,M>::next_turn()
+{
+	(*this)[0].print_program();
+	for(int i = 0; i < N*M; i++)
+	{
+		if((*this)[i].real())
+		{	
+			((*this)[i]).take_turn();
+		}
+	}
 }

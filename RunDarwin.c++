@@ -106,13 +106,18 @@ int main ()
     Simulate 5 moves.
     Print every grid.
     */
+	
+	
 	vector<Creature> run1;
-	run1.push_back(Creature(Food,1));
-	run1.push_back(Creature(Hopper,0));
-	run1.push_back(Creature(Hopper,1));
-	run1.push_back(Creature(Hopper,2));
-	run1.push_back(Creature(Hopper,3));
-	run1.push_back(Creature(Food,0));
+	
+	run1.insert(run1.end(),Creature(Food,1));
+	run1.insert(run1.end(),Creature(Hopper,0));
+	run1.insert(run1.end(),Creature(Hopper,1));
+	run1.insert(run1.end(),Creature(Hopper,2));
+	run1.insert(run1.end(),Creature(Hopper,3));
+	run1.insert(run1.end(),Creature(Food,0));
+	
+	
 	
 	Darwin<8,8> dar1;
 	dar1.add_creature(run1[0],0);
@@ -121,6 +126,10 @@ int main ()
 	dar1.add_creature(run1[3],36);
 	dar1.add_creature(run1[4],35);
 	dar1.add_creature(run1[5],63);
+	
+	dar1[0].print_program();
+	
+	dar1.next_turn();
 	
 	dar1.print_grid();
 
