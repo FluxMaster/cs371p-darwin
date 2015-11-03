@@ -24,7 +24,7 @@
 int main () 
 {
     using namespace std;
-
+	
     // ----
     // food
     // ----
@@ -127,12 +127,17 @@ int main ()
 	dar1.add_creature(run1[4],35);
 	dar1.add_creature(run1[5],63);
 	
-	dar1[0].print_program();
-	
-	dar1.next_turn();
-	
+	//dar1[0].print_program();
+	cout << "Turn: 0" << endl;
 	dar1.print_grid();
-
+	cout << endl;
+	for(int i = 0; i < 10; i++)
+	{
+		cout << "Turn: " << i+1 << endl;
+		dar1.next_turn(i);
+		dar1.print_grid();
+		cout << endl;
+	}
     // ----------
     // darwin 7x9
     // ----------
@@ -149,9 +154,32 @@ int main ()
     Print every grid.
     */
 	
-	//Darwin<7,9> dar2;
-	//dar2.print_grid();
-
+	
+	
+	vector<Creature> run2;
+	
+	run2.insert(run2.end(),Creature(Trap,2));
+	run2.insert(run2.end(),Creature(Hopper,1));
+	run2.insert(run2.end(),Creature(Rover,0));
+	run2.insert(run2.end(),Creature(Trap,3));
+	
+	Darwin<7,9> dar2;
+	
+	dar2.add_creature(run2[0],0);
+	dar2.add_creature(run2[1],16);
+	dar2.add_creature(run2[2],39);
+	dar2.add_creature(run2[3],50);
+	
+	cout << "Turn: 0" << endl;
+	dar2.print_grid();
+	cout << endl;
+	for(int i = 0; i < 5; i++)
+	{
+		cout << "Turn: " << i+1 << endl;
+		dar2.next_turn(i);
+		dar2.print_grid();
+		cout << endl;
+	}
     // ------------
     // darwin 72x72
     // without best

@@ -10,6 +10,7 @@
 
 using namespace std;
 
+class Creature;
 
 class Species
 {
@@ -23,41 +24,49 @@ class Species
 			//cout << "parse line\n";
 			//print_program();
 			//cout << "line: " << line << "\n";
-			string command(line.substr(0,line.size()-2));
+			int space = line.find(' ',0);
+			//cout << space << endl;
+			string command(line.substr(0,space));
+			//cout << command << endl;
 			//cout << "command: " << command << "\n";
 			if(strcmp(command.c_str(), "if_empty")==0)
 			{
-				char chr = line[line.size()];
-				int num = chr - '0';
+				string lnum = line.substr(space+1);
+				int num = stoi(lnum);
 				pair<string,int> result(command,num);
+				//cout<< command << " " << num << endl;
 				return result;
 			}
 			else if(strcmp(command.c_str(), "if_wall")==0)
 			{
-				char chr = line[line.size()];
-				int num = chr - '0';
+				string lnum = line.substr(space+1);
+				int num = stoi(lnum);
 				pair<string,int> result(command,num);
+				//cout<< command << " " << num << endl;				
 				return result;
 			}
 			else if(strcmp(command.c_str(), "if_random")==0)
 			{
-				char chr = line[line.size()];
-				int num = chr - '0';
+				string lnum = line.substr(space+1);
+				int num = stoi(lnum);
 				pair<string,int> result(command,num);
+				//cout<< command << " " << num << endl;
 				return result;
 			}
 			else if(strcmp(command.c_str(), "if_enemy")==0)
 			{
-				char chr = line[line.size()];
-				int num = chr - '0';
+				string lnum = line.substr(space+1);
+				int num = stoi(lnum);
 				pair<string,int> result(command,num);
+				//cout<< command << " " << num << endl;
 				return result;
 			}
-			else if(strcmp(command.c_str(), "g")==0)
+			else if(strcmp(command.c_str(), "go")==0)
 			{
-				char chr = line[line.size()];
-				int num = chr - '0';
+				string lnum = line.substr(space+1);
+				int num = stoi(lnum);
 				pair<string,int> result(command,num);
+				//cout<< command << " " << num << endl;
 				return result;
 			}
 			else
@@ -66,13 +75,8 @@ class Species
 				return result;
 			}
 		};
+		inline string next_instruction(int& pc, Creature& fnt, Creature& self);
 		
-		string next_instruction(int pc)
-		{
-			pair<string,int> line = parse_line(program[pc]);
-			return get<0>(line);
-		}
-
 		Species(std::vector<std::string> p, char s, string n)
 		{
 			symbol = s;
@@ -117,13 +121,16 @@ inline ostream& operator<<(ostream& os, Species& s)
 	return os;
 }
 
+template <std::size_t N, std::size_t M>
+class Darwin;
+
 class Creature
 {
 	private:
 		Species spec;
 		int pc = 0;
 		int dir; /* 0-N 1-E 2-S 3-W */
-		bool turntaken = false;
+		int turntaken = -1;
 	public:
 		Creature(Species s, int d)
 		{
@@ -131,6 +138,10 @@ class Creature
 			spec = s;
 			//(*spec).print_program();
 			dir = d;
+		}
+		Creature()
+		{
+			Species spec();
 		}
 		char render()
 		{
@@ -141,18 +152,36 @@ class Creature
 			//printf("chr[0]:%c\n",chr[0]);
 			return chr[0];
 		}
-		void take_turn()
+		template <std::size_t N, std::size_t M>
+		void take_turn(Darwin<N,M>& d, int position, int turn);
+		template <std::size_t N, std::size_t M>
+		void in_front(Darwin<N,M>& d, int position, Creature& fnt)
 		{
-			//cout << "take turn\n";
-			//(spec).print_program();
-			//cout << "Got past it\n";
-			(spec).next_instruction(pc);
-			turntaken = true;
+			switch(dir)
+			{
+				case 0:
+					if(position-N<0 || position-N > N*M)
+						break;
+					fnt = d[position-N];
+					break;
+				case 1:
+					if((position+1)/N>position/N || position+1>N*M)
+						break;
+					fnt = d[position+1];
+					break;
+				case 2:
+					if(position+N>=N*M)
+						break;
+					fnt = d[position+N];
+					break;
+				case 3:
+					if((position-1)/N<position/N || position-1<0)
+						break;
+					fnt = d[position-1];
+					break;
+			}
 		}
-		Creature()
-		{
-			Species spec();
-		}
+		
 		bool real()
 		{
 			if (spec.real())
@@ -171,7 +200,6 @@ class Creature
 				return false;
 			return true;
 		}
-		
 		//Debug
 		void print_program()
 		{
@@ -201,7 +229,8 @@ class Darwin
 		};
 		void print_grid();
 		void add_creature(Creature c, int location);
-		void next_turn();
+		void next_turn(int turn);
+		void request_hop(Creature& c,int dir, int position);
 		Creature& operator[](int x)
 		{
 			return creature_grid[x];
