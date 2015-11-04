@@ -19,64 +19,11 @@ class Species
 		char symbol;
 		string name;
 	public:
-		pair<string,int> parse_line(string line)
-		{
-			//cout << "parse line\n";
-			//print_program();
-			//cout << "line: " << line << "\n";
-			int space = line.find(' ',0);
-			//cout << space << endl;
-			string command(line.substr(0,space));
-			//cout << command << endl;
-			//cout << "command: " << command << "\n";
-			if(strcmp(command.c_str(), "if_empty")==0)
-			{
-				string lnum = line.substr(space+1);
-				int num = stoi(lnum);
-				pair<string,int> result(command,num);
-				//cout<< command << " " << num << endl;
-				return result;
-			}
-			else if(strcmp(command.c_str(), "if_wall")==0)
-			{
-				string lnum = line.substr(space+1);
-				int num = stoi(lnum);
-				pair<string,int> result(command,num);
-				//cout<< command << " " << num << endl;				
-				return result;
-			}
-			else if(strcmp(command.c_str(), "if_random")==0)
-			{
-				string lnum = line.substr(space+1);
-				int num = stoi(lnum);
-				pair<string,int> result(command,num);
-				//cout<< command << " " << num << endl;
-				return result;
-			}
-			else if(strcmp(command.c_str(), "if_enemy")==0)
-			{
-				string lnum = line.substr(space+1);
-				int num = stoi(lnum);
-				pair<string,int> result(command,num);
-				//cout<< command << " " << num << endl;
-				return result;
-			}
-			else if(strcmp(command.c_str(), "go")==0)
-			{
-				string lnum = line.substr(space+1);
-				int num = stoi(lnum);
-				pair<string,int> result(command,num);
-				//cout<< command << " " << num << endl;
-				return result;
-			}
-			else
-			{
-				pair<string,int> result(line,0);
-				return result;
-			}
-		};
-		inline string next_instruction(int& pc, Creature& fnt, Creature& self);
 		
+		inline string next_instruction(int& pc, Creature& fnt, Creature& self);
+		inline pair<string,int> parse_line(string line);
+		inline char render();
+		inline bool real();
 		Species(std::vector<std::string> p, char s, string n)
 		{
 			symbol = s;
@@ -84,22 +31,14 @@ class Species
 			name = n;
 		};
 		Species(){};
-		char render()
-		{
-			return symbol;
-		}
+		
 		bool operator==(Species s)
 		{
 			if((render()) == s.render())
 				return true;
 			return false;
 		}
-		bool real()
-		{
-			if (name.empty())
-				return false;
-			return true;
-		}
+		
 		//debug
 		void print_program()
 		{
@@ -141,58 +80,13 @@ class Creature
 		{
 			Species spec();
 		}
-		void infect_me(Species s)
-		{
-			spec = s;
-			pc = 0;
-		}
-		char render()
-		{
-			ostringstream os;
-			os << spec;
-			string str = os.str();
-			const char* chr = str.c_str();
-			//printf("chr[0]:%c\n",chr[0]);
-			return chr[0];
-		}
+		inline void infect_me(Species s);
+		inline char render();
 		template <std::size_t N, std::size_t M>
 		void take_turn(Darwin<N,M>& d, int position, int turn);
 		template <std::size_t N, std::size_t M>
-		void in_front(Darwin<N,M>& d, int position, Creature& fnt)
-		{
-			switch(dir)
-			{
-				case 0:
-					if(position-M<0 || position-M > N*M)
-						break;
-					fnt = d[position-M];
-					break;
-				case 1:
-					if((position+1)%M == 0 || position+1>N*M)
-					{
-						break;
-					}
-					fnt = d[position+1];
-					break;
-				case 2:
-					if(position+M>=N*M)
-						break;
-					fnt = d[position+N];
-					break;
-				case 3:
-					if((position-1)/M<position/M || position-1<0)
-						break;
-					fnt = d[position-1];
-					break;
-			}
-		}
-		
-		bool real()
-		{
-			if (spec.real())
-				return true;
-			return false;
-		}
+		void in_front(Darwin<N,M>& d, int position, Creature& fnt);
+		inline bool real();
 		bool operator==(Creature c)
 		{
 			if((render()) == c.render())
@@ -237,6 +131,18 @@ class Darwin
 		void next_turn(int turn);
 		void request_hop(Creature& c,int dir, int position);
 		void request_infect(Creature& c, Species s, int dir, int pos);
+		Creature& at(int x)
+		{
+			return (*this)[x];
+		}
+		Creature& begin(int x)
+		{
+			return (*this)[0];
+		}
+		Creature& end(int x)
+		{
+			return (*this)[size-1];
+		}
 		Creature& operator[](int x)
 		{
 			return creature_grid[x];

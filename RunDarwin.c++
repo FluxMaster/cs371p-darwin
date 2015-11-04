@@ -192,7 +192,14 @@ int main ()
     Call rand(), mod it with 5184 (72x72), and use that for the position
     in a row-major order grid.
     Call rand() again, mod it with 4 and use that for it's direction with
-    the ordering: west, north, east, south.
+    the ordering: west, north, east, south. 
+	****
+	EDIT: I ordered mine "north east south west", so I'll need to do some adjusting. CURSE YOU DIFFERING STANDARDS!
+	
+	WNES
+	NESW
+	
+	****
     Do that for each kind of creature.
     10 Food
     10 Hopper
@@ -202,7 +209,60 @@ int main ()
     Print the first 10 grids          (i.e. 0, 1, 2...9).
     Print every 100th grid after that (i.e. 100, 200, 300...1000).
     */
-
+	
+	Darwin<72,72> dar3;
+	vector<Creature>run3;
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar3.add_creature(Creature(Food,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar3.add_creature(Creature(Hopper,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar3.add_creature(Creature(Rover,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar3.add_creature(Creature(Trap,dir),pos);
+	}
+	
+	cout << endl;
+	for(int i = 0; i <= 1000; i++)
+	{
+		if(i<10 || i%100 == 0)
+		{
+			cout << "Turn: " << i << endl;
+			dar3.print_grid();
+			cout << endl;
+		}
+		dar3.next_turn(i);
+		
+	}
+	
+	
     // ------------
     // darwin 72x72
     // with best
