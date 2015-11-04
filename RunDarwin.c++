@@ -166,9 +166,9 @@ int main ()
 	Darwin<7,9> dar2;
 	
 	dar2.add_creature(run2[0],0);
-	dar2.add_creature(run2[1],16);
-	dar2.add_creature(run2[2],39);
-	dar2.add_creature(run2[3],50);
+	dar2.add_creature(run2[1],29);
+	dar2.add_creature(run2[2],49);
+	dar2.add_creature(run2[3],62);
 	
 	cout << "Turn: 0" << endl;
 	dar2.print_grid();

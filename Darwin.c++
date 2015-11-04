@@ -1,5 +1,5 @@
 #include "Darwin.h"
-#define DEBUG_GRID FALSE
+#define DEBUG_GRID false
 
 
 
@@ -16,9 +16,9 @@ void Darwin<N,M>::print_grid()
 	
 	//Actual Code
 	printf(" ");
-	for(int j = 0; j < M; j++)
+	for(int i = 0; i < M; i++)
 	{
-		int mod = j % 10;
+		int mod = i % 10;
 		printf("%d",mod);
 	}
 	printf("\n");
@@ -28,7 +28,7 @@ void Darwin<N,M>::print_grid()
 		printf("%d",mod);
 		for(int j = 0; j < M; j++)
 		{
-			printf("%c",symbol_grid[(i*N)+j]);
+			printf("%c",symbol_grid[(i*M)+j]);
 		}
 		printf("\n");
 	}
@@ -78,20 +78,19 @@ void Darwin<N,M>::request_hop(Creature& c,int dir, int position)
 	os << c;
 	string str = os.str();
 	const char* chr = str.c_str();
-	
 	switch(dir)
 	{
 		case 0:
-			creature_grid[position-N] = c;
-			symbol_grid[position-N] = chr[0]; 
+			creature_grid[position-M] = c;
+			symbol_grid[position-M] = chr[0]; 
 			break;
 		case 1:
 			creature_grid[position+1] = c;
 			symbol_grid[position+1] = chr[0]; 
 			break;
 		case 2:
-			creature_grid[position+N] = c;
-			symbol_grid[position+N] = chr[0]; 
+			creature_grid[position+M] = c;
+			symbol_grid[position+M] = chr[0]; 
 			break;
 		case 3:
 			creature_grid[position-1] = c;
@@ -104,17 +103,44 @@ void Darwin<N,M>::request_hop(Creature& c,int dir, int position)
 	
 	
 }
+template <std::size_t N, std::size_t M>
+void Darwin<N,M>::request_infect(Creature& c, Species s, int dir, int pos)
+{
+	c.infect_me(s);
+	switch(dir)
+	{
+		case 0:
+			creature_grid[pos-M] = c;
+			symbol_grid[pos-M] = c.render();
+			break;
+		case 1:
+			creature_grid[pos+1] = c;
+			symbol_grid[pos+1] = c.render();
+			break;
+		case 2:
+			creature_grid[pos+M] = c;
+			symbol_grid[pos+M] = c.render();
+			break;
+		case 3:
+			creature_grid[pos-1] = c;
+			symbol_grid[pos-1] = c.render();
+			break;
+	}
+}
+
 
 template <std::size_t N, std::size_t M>
 void Creature::take_turn(Darwin<N,M>& d, int position, int turn)
 {	
 	if(turn <= turntaken)
 		return;
+	//cout << "My name is " << (*this) << " and I'm taking turn " << turn << endl;
 	turntaken++;
 	Species Wall({},'w',"Wall");
 	Creature fnt(Wall,0);
 	in_front(d,position,fnt);
 	string inst = (spec).next_instruction(pc,fnt,(*this));
+	//cout << "I'm going to " << inst << endl;
 	if(strcmp(inst.c_str(), "left")==0)
 	{
 		dir--;
@@ -141,6 +167,11 @@ void Creature::take_turn(Darwin<N,M>& d, int position, int turn)
 	}
 	else if(strcmp(inst.c_str(), "infect")==0)
 	{
+		//cout << "Infect Time!" << endl;
+		if(fnt.real() && fnt.render()!='w')
+		{
+			d.request_infect(fnt,spec,dir,position);
+		}
 		//request infect
 	}
 }
@@ -175,7 +206,7 @@ string Species::next_instruction(int& pc, Creature& fnt, Creature& self)
 		}
 		else if(strcmp(get<0>(line).c_str(), "if_enemy")==0)
 		{
-			if(fnt.real() && fnt!=self)
+			if(fnt.real() && fnt.render() != 'w' && fnt!=self)
 				pc = get<1>(line);
 			else
 				pc++;

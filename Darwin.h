@@ -134,14 +134,17 @@ class Creature
 	public:
 		Creature(Species s, int d)
 		{
-			//cout << "Creation\n";
 			spec = s;
-			//(*spec).print_program();
 			dir = d;
 		}
 		Creature()
 		{
 			Species spec();
+		}
+		void infect_me(Species s)
+		{
+			spec = s;
+			pc = 0;
 		}
 		char render()
 		{
@@ -160,22 +163,24 @@ class Creature
 			switch(dir)
 			{
 				case 0:
-					if(position-N<0 || position-N > N*M)
+					if(position-M<0 || position-M > N*M)
 						break;
-					fnt = d[position-N];
+					fnt = d[position-M];
 					break;
 				case 1:
-					if((position+1)/N>position/N || position+1>N*M)
+					if((position+1)%M == 0 || position+1>N*M)
+					{
 						break;
+					}
 					fnt = d[position+1];
 					break;
 				case 2:
-					if(position+N>=N*M)
+					if(position+M>=N*M)
 						break;
 					fnt = d[position+N];
 					break;
 				case 3:
-					if((position-1)/N<position/N || position-1<0)
+					if((position-1)/M<position/M || position-1<0)
 						break;
 					fnt = d[position-1];
 					break;
@@ -231,6 +236,7 @@ class Darwin
 		void add_creature(Creature c, int location);
 		void next_turn(int turn);
 		void request_hop(Creature& c,int dir, int position);
+		void request_infect(Creature& c, Species s, int dir, int pos);
 		Creature& operator[](int x)
 		{
 			return creature_grid[x];
