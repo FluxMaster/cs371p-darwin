@@ -18,13 +18,15 @@ class Species
 		std::vector<std::string> program;
 		char symbol;
 		string name;
+		inline char render();
 	public:
 		
 		inline string next_instruction(int& pc, Creature& fnt, Creature& self);
 		inline pair<string,int> parse_line(string line);
-		inline char render();
+		
 		inline bool real();
 		inline void add_instruction(string inst);
+		inline friend ostream& operator<<(ostream& os, Species& s);
 		Species(std::vector<std::string> p, char s, string n)
 		{
 			symbol = s;
@@ -72,6 +74,7 @@ class Creature
 		int pc = 0;
 		int dir; /* 0-N 1-E 2-S 3-W */
 		int turntaken = -1;
+		inline char render();
 	public:
 		Creature(Species s, int d)
 		{
@@ -83,12 +86,13 @@ class Creature
 			Species spec();
 		}
 		inline void infect_me(Species s);
-		inline char render();
+		
 		template <std::size_t N, std::size_t M>
 		void take_turn(Darwin<N,M>& d, int position, int turn);
 		template <std::size_t N, std::size_t M>
 		void in_front(Darwin<N,M>& d, int position, Creature& fnt);
 		inline bool real();
+		inline friend ostream& operator<<(ostream& os, Creature& c);
 		bool operator==(Creature c)
 		{
 			if((render()) == c.render())
