@@ -15,7 +15,7 @@
 #include <string>    // string
 #include "Darwin.c++"  //Darwin Class
 
-#define DEBUG_SPECIES false
+
 
 // ----
 // main
@@ -34,9 +34,7 @@ int main ()
      1: go 0
     */
 	Species Food({"left","go 0"},'f',"Food");
-	#if DEBUG_SPECIES
-	Food.print_program();
-	#endif
+	
     // ------
     // hopper
     // ------
@@ -46,9 +44,7 @@ int main ()
      1: go 0
     */
 	Species Hopper({"hop","go 0"},'h',"Hopper");
-	#if DEBUG_SPECIES
-	Hopper.print_program();
-	#endif
+	
     // -----
     // rover
     // -----
@@ -68,10 +64,7 @@ int main ()
     */
 	Species Rover({"if_enemy 9","if_empty 7","if_random 5","left",
 					"go 0","right","go 0","hop","go 0","infect",
-					"go 0"},'r',"Rover");
-	#if DEBUG_SPECIES
-	Rover.print_program();
-	#endif	
+					"go 0"},'r',"Rover");	
 	
 	
     // ----
@@ -86,9 +79,6 @@ int main ()
      4: go 0
     */
 	Species Trap({"if_enemy 3","left","go 0","infect","go 0"},'t',"Trap");
-	#if DEBUG_SPECIES
-	Trap.print_program();
-	#endif	
 
     // ----------
     // darwin 8x8
@@ -194,7 +184,8 @@ int main ()
     Call rand() again, mod it with 4 and use that for it's direction with
     the ordering: west, north, east, south. 
 	****
-	EDIT: I ordered mine "north east south west", so I'll need to do some adjusting. CURSE YOU DIFFERING STANDARDS!
+	EDIT: I ordered mine "north east south west", so I'll need to do some adjusting. 
+	CURSE YOU DIFFERING STANDARDS!
 	
 	WNES
 	NESW

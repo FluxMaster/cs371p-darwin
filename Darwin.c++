@@ -4,7 +4,13 @@
 //------------------
 // Species Functions
 //------------------
-
+/**
+ * This determines a creature's next instruction
+ * returns a string of the next instruction
+ * @param pc The Program Counter
+ * @param fnt The Creature in front of the Creature that needs next instruction
+ * @return self The Creature who needs next instruction
+**/
 string Species::next_instruction(int& pc, Creature& fnt, Creature& self)
 {
 	ostringstream os;
@@ -57,6 +63,11 @@ string Species::next_instruction(int& pc, Creature& fnt, Creature& self)
 	return NULL;
 }
 
+/**
+ * This parses the command into a pair of <instruction,line number>
+ * returns a pair<string,int>
+ * @param line a command to be parsed
+**/
 pair<string,int> Species::parse_line(string line)
 {
 	int space = line.find(' ',0);
@@ -102,27 +113,51 @@ pair<string,int> Species::parse_line(string line)
 		return result;
 	}
 }
-
+/**
+ * This determines what character to print out
+ * returns a char representing the species
+**/
 char Species::render()
 {
 	return symbol;
 }
 
+/**
+ * This determines if this species is not a "null" construction
+ * returns a bool true: constructed false: "null" constructed
+**/
 bool Species::real()
 {
 	if (name.empty())
 		return false;
 	return true;
 }
+/**
+ * This adds an instruction to the program of species
+ * @param inst A string containing the instruction to be added
+**/
+void Species::add_instruction(string inst)
+{
+	program.push_back(inst);
+}
 
 //-------------------
 // Creature Functions
 //-------------------
+/**
+ * This is how Darwin infects creatures
+ * @param s The species to become
+**/
 void Creature::infect_me(Species s)
 {
 	spec = s;
 	pc = 0;
 }
+
+/**
+ * This determines what character to print out
+ * returns a char representing the creature
+**/
 char Creature::render()
 {
 	ostringstream os;
@@ -132,6 +167,12 @@ char Creature::render()
 	return chr[0];
 }
 
+/**
+ * This is how Darwin requests creatures take their turn
+ * @param d A reference to a Darwin object for communication
+ * @param position An int that represents where this Creature is
+ * @return turn An int telling which turn it is, so creatures don't take multiple turns in one turn
+**/
 template <std::size_t N, std::size_t M>
 void Creature::take_turn(Darwin<N,M>& d, int position, int turn)
 {	
@@ -178,6 +219,13 @@ void Creature::take_turn(Darwin<N,M>& d, int position, int turn)
 	}
 }
 
+/**
+ * This determines what is in front of the creature
+ * Sets fnt to what is in front
+ * @param d A reference to a Darwin object for communication
+ * @param position An int that represents where this Creature is
+ * @return fnt A reference to a creature that represents what is in front of the curent creature
+**/
 template <std::size_t N, std::size_t M>
 void Creature::in_front(Darwin<N,M>& d, int position, Creature& fnt)
 {
@@ -208,6 +256,10 @@ void Creature::in_front(Darwin<N,M>& d, int position, Creature& fnt)
 	}
 }
 
+/**
+ * This determines is the creature is "null" constructed
+ * returns a bool true: constructed false: "null" constructed
+**/
 bool Creature::real()
 {
 	if (spec.real())
@@ -219,6 +271,9 @@ bool Creature::real()
 //-----------------
 // Darwin Functions
 //-----------------
+/**
+ * This displays the grid
+**/
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::print_grid()
 {
@@ -248,6 +303,29 @@ void Darwin<N,M>::print_grid()
 	}
 }
 
+/**
+ * This returns the grid as a string for debugging and testing (no numbers either)
+**/
+template <std::size_t N, std::size_t M>
+string Darwin<N,M>::debug_grid()
+{
+	string str;
+	for(int i = 0; i < N; i++)
+	{
+		for(int j = 0; j < M; j++)
+		{
+			str = str + symbol_grid[(i*M)+j];
+		}
+		str = str + "\n";
+	}
+	return str;
+}
+
+/**
+ * This adds a Creature to the Darwin's Creature and Symbol grids
+ * @param c A Creature to add
+ * @param location An int that represents where to add it
+**/
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::add_creature(Creature c, int location)
 {
@@ -260,6 +338,10 @@ void Darwin<N,M>::add_creature(Creature c, int location)
 	symbol_grid[location] = chr[0];
 }
 
+/**
+ * This tells all the creatures to take their next turn
+ * @param turn An int that signifies which turn this is
+**/
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::next_turn(int turn)
 {
@@ -279,6 +361,12 @@ void Darwin<N,M>::next_turn(int turn)
 	}
 }
 
+/**
+ * This lets a Creature request to move forward and moves it forward
+ * @param c A Creature that wants to hop
+ * @param dir An int that represents which direction to hop it
+ * @return int position An int that represents where Creature c is
+**/
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::request_hop(Creature& c,int dir, int position)
 {	
@@ -311,6 +399,14 @@ void Darwin<N,M>::request_hop(Creature& c,int dir, int position)
 	
 	
 }
+
+/**
+ * This lets a Creature request to infect and infects the creature c
+ * @param c A Creature that wants to be infected
+ * @param s A Species that c turns into
+ * @param dir An int that represents which direction c faces
+ * @return int position An int that represents where Creature c is
+**/
 template <std::size_t N, std::size_t M>
 void Darwin<N,M>::request_infect(Creature& c, Species s, int dir, int pos)
 {

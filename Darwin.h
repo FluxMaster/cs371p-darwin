@@ -24,6 +24,7 @@ class Species
 		inline pair<string,int> parse_line(string line);
 		inline char render();
 		inline bool real();
+		inline void add_instruction(string inst);
 		Species(std::vector<std::string> p, char s, string n)
 		{
 			symbol = s;
@@ -40,17 +41,18 @@ class Species
 		}
 		
 		//debug
-		void print_program()
+		string print_program()
 		{
-			cout << name << " " << symbol << "\n";
-			cout << program.size() << "\n";
+			//cout << name << " " << symbol << "\n";
+			//cout << program.size() << "\n";
 			//cout << program.at(0) << "\n";
 			//cout << program.at(1) << "\n";
+			string result;
 			for(unsigned int i = 0; i < program.size(); i++)
 			{
-				cout << i << ":" << program[i] << "\n";
+				result = result + program[i] + " ";
 			}
-			cout << "\n";
+			return result;
 		}
 };
 
@@ -118,7 +120,7 @@ class Darwin
 {
 	private:
 		char symbol_grid[N*M];
-		Creature creature_grid[N*M];
+		array<Creature,N*M> creature_grid;
 		int size;
 	public:
 		Darwin()
@@ -131,17 +133,20 @@ class Darwin
 		void next_turn(int turn);
 		void request_hop(Creature& c,int dir, int position);
 		void request_infect(Creature& c, Species s, int dir, int pos);
+		string debug_grid();
 		Creature& at(int x)
 		{
 			return (*this)[x];
 		}
-		Creature& begin(int x)
+		
+		Creature* begin()
 		{
-			return (*this)[0];
+			return creature_grid.begin();
 		}
-		Creature& end(int x)
+		
+		Creature* end()
 		{
-			return (*this)[size-1];
+			return creature_grid.end();
 		}
 		Creature& operator[](int x)
 		{
