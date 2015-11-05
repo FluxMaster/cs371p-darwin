@@ -2,7 +2,7 @@ FILES :=                              \
     .travis.yml                       \
 	darwin-tests/app575-RunDarwin.out \
 	darwin-tests/app575-TestDarwin.c++ \
-	darwin-tests/app575-TestDarwin.out
+	darwin-tests/app575-TestDarwin.out \
     Darwin.c++                       \
     Darwin.h                         \
     Darwin.log                       \
