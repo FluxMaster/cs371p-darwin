@@ -1,0 +1,91 @@
+\hypertarget{classSpecies}{\section{Species Class Reference}
+\label{classSpecies}\index{Species@{Species}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{classSpecies_ad2b5c09ce528d3310d9c0ee144a56aa5}{next\-\_\-instruction} (int \&pc, \hyperlink{classCreature}{Creature} \&fnt, \hyperlink{classCreature}{Creature} \&self)
+\item 
+pair$<$ string, int $>$ \hyperlink{classSpecies_ad9bc32bb3eb1039bb45630f1845ea9d3}{parse\-\_\-line} (string line)
+\item 
+char \hyperlink{classSpecies_a77bad9b75b82dbf719abe87925ef3745}{render} ()
+\item 
+bool \hyperlink{classSpecies_ac458aa1dfe5f7a72686323339f8412ec}{real} ()
+\item 
+void \hyperlink{classSpecies_a2578012dea60323f75b03a65dc7ba54e}{add\-\_\-instruction} (string inst)
+\item 
+\hypertarget{classSpecies_a67e8788a43c9f8052203cc8c7dadbf3c}{{\bfseries Species} (std\-::vector$<$ std\-::string $>$ p, char s, string n)}\label{classSpecies_a67e8788a43c9f8052203cc8c7dadbf3c}
+
+\item 
+\hypertarget{classSpecies_a1c655e6b935bb1da8cbfb5ed19e00883}{bool {\bfseries operator==} (\hyperlink{classSpecies}{Species} s)}\label{classSpecies_a1c655e6b935bb1da8cbfb5ed19e00883}
+
+\item 
+\hypertarget{classSpecies_a33c2bb360c575715c3c6b024fb5cbdfa}{string {\bfseries print\-\_\-program} ()}\label{classSpecies_a33c2bb360c575715c3c6b024fb5cbdfa}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSpecies_a2578012dea60323f75b03a65dc7ba54e}{\index{Species@{Species}!add\-\_\-instruction@{add\-\_\-instruction}}
+\index{add\-\_\-instruction@{add\-\_\-instruction}!Species@{Species}}
+\subsubsection[{add\-\_\-instruction}]{\setlength{\rightskip}{0pt plus 5cm}void Species\-::add\-\_\-instruction (
+\begin{DoxyParamCaption}
+\item[{string}]{inst}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSpecies_a2578012dea60323f75b03a65dc7ba54e}
+This adds an instruction to the program of species 
+\begin{DoxyParams}{Parameters}
+{\em inst} & A string containing the instruction to be added \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSpecies_ad2b5c09ce528d3310d9c0ee144a56aa5}{\index{Species@{Species}!next\-\_\-instruction@{next\-\_\-instruction}}
+\index{next\-\_\-instruction@{next\-\_\-instruction}!Species@{Species}}
+\subsubsection[{next\-\_\-instruction}]{\setlength{\rightskip}{0pt plus 5cm}string Species\-::next\-\_\-instruction (
+\begin{DoxyParamCaption}
+\item[{int \&}]{pc, }
+\item[{{\bf Creature} \&}]{fnt, }
+\item[{{\bf Creature} \&}]{self}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSpecies_ad2b5c09ce528d3310d9c0ee144a56aa5}
+This determines a creature's next instruction returns a string of the next instruction 
+\begin{DoxyParams}{Parameters}
+{\em pc} & The Program Counter \\
+\hline
+{\em fnt} & The \hyperlink{classCreature}{Creature} in front of the \hyperlink{classCreature}{Creature} that needs next instruction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+self The \hyperlink{classCreature}{Creature} who needs next instruction 
+\end{DoxyReturn}
+\hypertarget{classSpecies_ad9bc32bb3eb1039bb45630f1845ea9d3}{\index{Species@{Species}!parse\-\_\-line@{parse\-\_\-line}}
+\index{parse\-\_\-line@{parse\-\_\-line}!Species@{Species}}
+\subsubsection[{parse\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$ string, int $>$ Species\-::parse\-\_\-line (
+\begin{DoxyParamCaption}
+\item[{string}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSpecies_ad9bc32bb3eb1039bb45630f1845ea9d3}
+This parses the command into a pair of $<$instruction,line number$>$ returns a pair$<$string,int$>$ 
+\begin{DoxyParams}{Parameters}
+{\em line} & a command to be parsed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSpecies_ac458aa1dfe5f7a72686323339f8412ec}{\index{Species@{Species}!real@{real}}
+\index{real@{real}!Species@{Species}}
+\subsubsection[{real}]{\setlength{\rightskip}{0pt plus 5cm}bool Species\-::real (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSpecies_ac458aa1dfe5f7a72686323339f8412ec}
+This determines if this species is not a \char`\"{}null\char`\"{} construction returns a bool true\-: constructed false\-: \char`\"{}null\char`\"{} constructed \hypertarget{classSpecies_a77bad9b75b82dbf719abe87925ef3745}{\index{Species@{Species}!render@{render}}
+\index{render@{render}!Species@{Species}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}char Species\-::render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSpecies_a77bad9b75b82dbf719abe87925ef3745}
+This determines what character to print out returns a char representing the species 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Darwin.\-h\item 
+Darwin.\-c++\end{DoxyCompactItemize}

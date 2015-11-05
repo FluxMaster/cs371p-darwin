@@ -1,0 +1,121 @@
+\hypertarget{classDarwin}{\section{Darwin$<$ N, M $>$ Class Template Reference}
+\label{classDarwin}\index{Darwin$<$ N, M $>$@{Darwin$<$ N, M $>$}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classDarwin_a26fe32fb40e177792f46022774b0abe3}{print\-\_\-grid} ()
+\item 
+void \hyperlink{classDarwin_ad1615958f13b1cc66ab54df87a582e45}{add\-\_\-creature} (\hyperlink{classCreature}{Creature} c, int location)
+\item 
+void \hyperlink{classDarwin_ad6ccb751d1a17f5e6fa6dcc850ed06df}{next\-\_\-turn} (int turn)
+\item 
+void \hyperlink{classDarwin_a64e26d5a4dea520350c2e43e1aaebb57}{request\-\_\-hop} (\hyperlink{classCreature}{Creature} \&c, int dir, int position)
+\item 
+void \hyperlink{classDarwin_a700cab7603364e9b303d7ff81a91bd27}{request\-\_\-infect} (\hyperlink{classCreature}{Creature} \&c, \hyperlink{classSpecies}{Species} s, int dir, int pos)
+\item 
+string \hyperlink{classDarwin_ae4a599b99986c7c6be8ccf7822ba4add}{debug\-\_\-grid} ()
+\item 
+\hypertarget{classDarwin_a3a63ecb2e96fc8445ee9c39a2566c316}{\hyperlink{classCreature}{Creature} \& {\bfseries at} (int x)}\label{classDarwin_a3a63ecb2e96fc8445ee9c39a2566c316}
+
+\item 
+\hypertarget{classDarwin_a7d1afc96e75fbf8c50e7a50e8462effb}{\hyperlink{classCreature}{Creature} $\ast$ {\bfseries begin} ()}\label{classDarwin_a7d1afc96e75fbf8c50e7a50e8462effb}
+
+\item 
+\hypertarget{classDarwin_a772ed458b7b9571bf0b34a00c5b3bd33}{\hyperlink{classCreature}{Creature} $\ast$ {\bfseries end} ()}\label{classDarwin_a772ed458b7b9571bf0b34a00c5b3bd33}
+
+\item 
+\hypertarget{classDarwin_af5c2a1b330126c8c4988068b6575a8e8}{\hyperlink{classCreature}{Creature} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int x)}\label{classDarwin_af5c2a1b330126c8c4988068b6575a8e8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDarwin_ad1615958f13b1cc66ab54df87a582e45}{\index{Darwin@{Darwin}!add\-\_\-creature@{add\-\_\-creature}}
+\index{add\-\_\-creature@{add\-\_\-creature}!Darwin@{Darwin}}
+\subsubsection[{add\-\_\-creature}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void {\bf Darwin}$<$ N, M $>$\-::add\-\_\-creature (
+\begin{DoxyParamCaption}
+\item[{{\bf Creature}}]{c, }
+\item[{int}]{location}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_ad1615958f13b1cc66ab54df87a582e45}
+This adds a \hyperlink{classCreature}{Creature} to the \hyperlink{classDarwin}{Darwin}'s \hyperlink{classCreature}{Creature} and Symbol grids 
+\begin{DoxyParams}{Parameters}
+{\em c} & A \hyperlink{classCreature}{Creature} to add \\
+\hline
+{\em location} & An int that represents where to add it \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDarwin_ae4a599b99986c7c6be8ccf7822ba4add}{\index{Darwin@{Darwin}!debug\-\_\-grid@{debug\-\_\-grid}}
+\index{debug\-\_\-grid@{debug\-\_\-grid}!Darwin@{Darwin}}
+\subsubsection[{debug\-\_\-grid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ string {\bf Darwin}$<$ N, M $>$\-::debug\-\_\-grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_ae4a599b99986c7c6be8ccf7822ba4add}
+This returns the grid as a string for debugging and testing (no numbers either) returns a string, the grid \hypertarget{classDarwin_ad6ccb751d1a17f5e6fa6dcc850ed06df}{\index{Darwin@{Darwin}!next\-\_\-turn@{next\-\_\-turn}}
+\index{next\-\_\-turn@{next\-\_\-turn}!Darwin@{Darwin}}
+\subsubsection[{next\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void {\bf Darwin}$<$ N, M $>$\-::next\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int}]{turn}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_ad6ccb751d1a17f5e6fa6dcc850ed06df}
+This tells all the creatures to take their next turn 
+\begin{DoxyParams}{Parameters}
+{\em turn} & An int that signifies which turn this is \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDarwin_a26fe32fb40e177792f46022774b0abe3}{\index{Darwin@{Darwin}!print\-\_\-grid@{print\-\_\-grid}}
+\index{print\-\_\-grid@{print\-\_\-grid}!Darwin@{Darwin}}
+\subsubsection[{print\-\_\-grid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void {\bf Darwin}$<$ N, M $>$\-::print\-\_\-grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_a26fe32fb40e177792f46022774b0abe3}
+This displays the grid \hypertarget{classDarwin_a64e26d5a4dea520350c2e43e1aaebb57}{\index{Darwin@{Darwin}!request\-\_\-hop@{request\-\_\-hop}}
+\index{request\-\_\-hop@{request\-\_\-hop}!Darwin@{Darwin}}
+\subsubsection[{request\-\_\-hop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void {\bf Darwin}$<$ N, M $>$\-::request\-\_\-hop (
+\begin{DoxyParamCaption}
+\item[{{\bf Creature} \&}]{c, }
+\item[{int}]{dir, }
+\item[{int}]{position}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_a64e26d5a4dea520350c2e43e1aaebb57}
+This lets a \hyperlink{classCreature}{Creature} request to move forward and moves it forward 
+\begin{DoxyParams}{Parameters}
+{\em c} & A \hyperlink{classCreature}{Creature} that wants to hop \\
+\hline
+{\em dir} & An int that represents which direction to hop it \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int position An int that represents where \hyperlink{classCreature}{Creature} c is 
+\end{DoxyReturn}
+\hypertarget{classDarwin_a700cab7603364e9b303d7ff81a91bd27}{\index{Darwin@{Darwin}!request\-\_\-infect@{request\-\_\-infect}}
+\index{request\-\_\-infect@{request\-\_\-infect}!Darwin@{Darwin}}
+\subsubsection[{request\-\_\-infect}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void {\bf Darwin}$<$ N, M $>$\-::request\-\_\-infect (
+\begin{DoxyParamCaption}
+\item[{{\bf Creature} \&}]{c, }
+\item[{{\bf Species}}]{s, }
+\item[{int}]{dir, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}}\label{classDarwin_a700cab7603364e9b303d7ff81a91bd27}
+This lets a \hyperlink{classCreature}{Creature} request to infect and infects the creature c 
+\begin{DoxyParams}{Parameters}
+{\em c} & A \hyperlink{classCreature}{Creature} that wants to be infected \\
+\hline
+{\em s} & A \hyperlink{classSpecies}{Species} that c turns into \\
+\hline
+{\em dir} & An int that represents which direction c faces \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int position An int that represents where \hyperlink{classCreature}{Creature} c is 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Darwin.\-h\item 
+Darwin.\-c++\end{DoxyCompactItemize}

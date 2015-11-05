@@ -80,6 +80,55 @@ int main ()
     */
 	Species Trap({"if_enemy 3","left","go 0","infect","go 0"},'t',"Trap");
 
+	// ----
+	// best
+	// ----
+	/*
+	0:"if_enemy 2",
+    1:"go 4",
+	2:"infect",
+	3:"go 0",
+	4:"if_enemy 0",
+	5:"left",
+	6:"if_enemy 0",
+	7:"left",
+	8:"if_enemy 0",
+	9:"left",
+	10:"if_enemy 0",
+	11:"if_wall 17",
+	12:"if_random 15",
+	13:"left",
+	14:"go 12",
+	15:"hop",
+	16:"go 12",
+	17:"left",
+	18:"if_enemy 0",
+	19:"left",
+	20:"go 10",
+	21:"if_enemy 0",
+	22:"if_empty 26",
+	23:"left",
+	24:"go 22",
+	25:"infect",
+	26:"if_random 21",
+	27:"if_random 21",
+	28:"if_random 21",
+	29:"if_random 21",
+	30:"if_random 21",
+	31:"if_random 21",
+	32:"go 0"
+	*/
+	Species Best({"if_enemy 2","go 4","infect","go 0","if_enemy 0",
+					"left","if_enemy 0","left","if_enemy 0","left",
+					"if_enemy 0","if_wall 17","if_random 15","left",
+					"go 10","hop","go 10","left","if_enemy 0","left",
+					"go 10","if_enemy 0","if_empty 26","left","go 22",
+					"infect","if_random 21","if_random 21","if_random 21",
+					"if_random 21","if_random 21","if_random 21","go 1"},'b',"Best");
+	
+	
+	
+	
     // ----------
     // darwin 8x8
     // ----------
@@ -202,7 +251,7 @@ int main ()
     */
 	
 	Darwin<72,72> dar3;
-	vector<Creature>run3;
+
 	for(int i = 0; i < 10; i++)
 	{
 		int pos = rand()%5184;
@@ -278,6 +327,66 @@ int main ()
     Print the first 10 grids          (i.e. 0, 1, 2...9).
     Print every 100th grid after that (i.e. 100, 200, 300...1000).
     */
+	Darwin<72,72> dar4;
 
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar4.add_creature(Creature(Food,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar4.add_creature(Creature(Hopper,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar4.add_creature(Creature(Rover,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar4.add_creature(Creature(Trap,dir),pos);
+	}
+	for(int i = 0; i < 10; i++)
+	{
+		int pos = rand()%5184;
+		int dir = rand()%4;
+		dir--;
+		if(dir<0)
+			dir+=4;
+		dar4.add_creature(Creature(Best,dir),pos);
+	}
+	
+	cout << endl;
+	for(int i = 0; i <= 1000; i++)
+	{
+		if(i<10 || i%100 == 0)
+		{
+			cout << "Turn: " << i << endl;
+			dar4.print_grid();
+			cout << endl;
+		}
+		dar4.next_turn(i);
+		
+	}
+	
     return 0;
 }

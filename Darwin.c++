@@ -305,6 +305,7 @@ void Darwin<N,M>::print_grid()
 
 /**
  * This returns the grid as a string for debugging and testing (no numbers either)
+ * returns a string, the grid
 **/
 template <std::size_t N, std::size_t M>
 string Darwin<N,M>::debug_grid()

@@ -1,0 +1,101 @@
+\hypertarget{classCreature}{\section{Creature Class Reference}
+\label{classCreature}\index{Creature@{Creature}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCreature_a4f3236ca916953f3dedda46875a1386e}{{\bfseries Creature} (\hyperlink{classSpecies}{Species} s, int d)}\label{classCreature_a4f3236ca916953f3dedda46875a1386e}
+
+\item 
+void \hyperlink{classCreature_a71fcba906866260a1172036d7074c2c3}{infect\-\_\-me} (\hyperlink{classSpecies}{Species} s)
+\item 
+char \hyperlink{classCreature_abede6ea489d2f9731b88e08923733ea2}{render} ()
+\item 
+{\footnotesize template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ }\\void \hyperlink{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}{take\-\_\-turn} (\hyperlink{classDarwin}{Darwin}$<$ N, M $>$ \&d, int position, int turn)
+\item 
+{\footnotesize template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ }\\void \hyperlink{classCreature_a597107fe6cc07e2bc31da65358eb5e45}{in\-\_\-front} (\hyperlink{classDarwin}{Darwin}$<$ N, M $>$ \&d, int position, \hyperlink{classCreature}{Creature} \&fnt)
+\item 
+bool \hyperlink{classCreature_aee075e42b38c6e82f8cb6ef652be4427}{real} ()
+\item 
+\hypertarget{classCreature_ab221cfcba3b7a44ec516bf57ef42a54c}{bool {\bfseries operator==} (\hyperlink{classCreature}{Creature} c)}\label{classCreature_ab221cfcba3b7a44ec516bf57ef42a54c}
+
+\item 
+\hypertarget{classCreature_acde8a07f27259e5a953fdeb68222f7f7}{bool {\bfseries operator!=} (\hyperlink{classCreature}{Creature} c)}\label{classCreature_acde8a07f27259e5a953fdeb68222f7f7}
+
+\item 
+\hypertarget{classCreature_a15c054611a8f6d5592a276e7640544e3}{void {\bfseries print\-\_\-program} ()}\label{classCreature_a15c054611a8f6d5592a276e7640544e3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCreature_a597107fe6cc07e2bc31da65358eb5e45}{\index{Creature@{Creature}!in\-\_\-front@{in\-\_\-front}}
+\index{in\-\_\-front@{in\-\_\-front}!Creature@{Creature}}
+\subsubsection[{in\-\_\-front}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void Creature\-::in\-\_\-front (
+\begin{DoxyParamCaption}
+\item[{{\bf Darwin}$<$ N, M $>$ \&}]{d, }
+\item[{int}]{position, }
+\item[{{\bf Creature} \&}]{fnt}
+\end{DoxyParamCaption}
+)}}\label{classCreature_a597107fe6cc07e2bc31da65358eb5e45}
+This determines what is in front of the creature Sets fnt to what is in front 
+\begin{DoxyParams}{Parameters}
+{\em d} & A reference to a \hyperlink{classDarwin}{Darwin} object for communication \\
+\hline
+{\em position} & An int that represents where this \hyperlink{classCreature}{Creature} is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+fnt A reference to a creature that represents what is in front of the curent creature 
+\end{DoxyReturn}
+\hypertarget{classCreature_a71fcba906866260a1172036d7074c2c3}{\index{Creature@{Creature}!infect\-\_\-me@{infect\-\_\-me}}
+\index{infect\-\_\-me@{infect\-\_\-me}!Creature@{Creature}}
+\subsubsection[{infect\-\_\-me}]{\setlength{\rightskip}{0pt plus 5cm}void Creature\-::infect\-\_\-me (
+\begin{DoxyParamCaption}
+\item[{{\bf Species}}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCreature_a71fcba906866260a1172036d7074c2c3}
+This is how \hyperlink{classDarwin}{Darwin} infects creatures 
+\begin{DoxyParams}{Parameters}
+{\em s} & The species to become \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCreature_aee075e42b38c6e82f8cb6ef652be4427}{\index{Creature@{Creature}!real@{real}}
+\index{real@{real}!Creature@{Creature}}
+\subsubsection[{real}]{\setlength{\rightskip}{0pt plus 5cm}bool Creature\-::real (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCreature_aee075e42b38c6e82f8cb6ef652be4427}
+This determines is the creature is \char`\"{}null\char`\"{} constructed returns a bool true\-: constructed false\-: \char`\"{}null\char`\"{} constructed \hypertarget{classCreature_abede6ea489d2f9731b88e08923733ea2}{\index{Creature@{Creature}!render@{render}}
+\index{render@{render}!Creature@{Creature}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}char Creature\-::render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCreature_abede6ea489d2f9731b88e08923733ea2}
+This determines what character to print out returns a char representing the creature \hypertarget{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}{\index{Creature@{Creature}!take\-\_\-turn@{take\-\_\-turn}}
+\index{take\-\_\-turn@{take\-\_\-turn}!Creature@{Creature}}
+\subsubsection[{take\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void Creature\-::take\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{{\bf Darwin}$<$ N, M $>$ \&}]{d, }
+\item[{int}]{position, }
+\item[{int}]{turn}
+\end{DoxyParamCaption}
+)}}\label{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}
+This is how \hyperlink{classDarwin}{Darwin} requests creatures take their turn 
+\begin{DoxyParams}{Parameters}
+{\em d} & A reference to a \hyperlink{classDarwin}{Darwin} object for communication \\
+\hline
+{\em position} & An int that represents where this \hyperlink{classCreature}{Creature} is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+turn An int telling which turn it is, so creatures don't take multiple turns in one turn 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Darwin.\-h\item 
+Darwin.\-c++\end{DoxyCompactItemize}
