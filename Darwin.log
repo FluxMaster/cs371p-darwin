@@ -1,0 +1,83 @@
+commit cdafa3591398389b61caa5a91aef7bc9ede6eaac
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Thu Nov 5 16:06:50 2015 -0600
+
+    Made Render Private, Added UML
+
+commit a8c5fb221407e09c6ef94dd777ba0bb146af1992
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Thu Nov 5 15:50:27 2015 -0600
+
+    Final File List (I think)
+
+commit cb14525a05f3a4aa8ba6f76e7d8c5a6ef1cc2480
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Thu Nov 5 15:07:09 2015 -0600
+
+    Added gitignore and Test.c++
+
+commit f7d36bb56543c1b50e5cb6ace188420162a72f28
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Thu Nov 5 15:06:14 2015 -0600
+
+    Wrote Documentation and Tests
+
+commit c93ea8e2bb9e20f4ebd745da739445e83c01fbb5
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Tue Nov 3 22:10:29 2015 -0600
+
+    Just added at() begin() end()
+
+commit 98d6e66cc762ebcbbd9f4e7d0137d656806c04b3
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Tue Nov 3 20:13:05 2015 -0600
+
+    Infect Works, so everything should finally work. Time to test 72x72
+
+commit 2ec1e5cf6f90bb228be10c62874b166d291dda79
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Tue Nov 3 17:31:38 2015 -0600
+
+    Everything except infect works on the board
+
+commit d0b3a2b2f79674edb2a86db60e8e6f37ed911a4f
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Tue Nov 3 00:13:31 2015 -0600
+
+    Code is properly parsed
+
+commit 7008592e65d932b41ec7bbef47c2678dfaecf1ca
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Mon Nov 2 01:55:37 2015 -0600
+
+    Creature Placement and Display works
+
+commit bbf5e994704b2f29c5af4589355fbe086fd50d66
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Sun Nov 1 22:20:19 2015 -0600
+
+    "End of Day 1"
+
+commit 91f752fe63be64fa05e282b6d471d957f11f60fe
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Sun Nov 1 21:51:07 2015 -0600
+
+    Species, creature base implementation
+
+commit 818ddd03f12e211b2827a942d995c8d32e302fd9
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Sun Nov 1 16:12:45 2015 -0600
+
+    "Added Travis.yml"
+
+commit 2f6211c13d6928c292cb947588a90af417c863c3
+Author: Andrew Polasek <andy@polasek.com>
+Date:   Sun Nov 1 16:00:28 2015 -0600
+
+    "Grid Seems to Print"
+
+commit 806e3ebde6c164a068da5d21ae28912fb15b1aab
+Author: Andy <andy@polasek.com>
+Date:   Sun Nov 1 14:46:56 2015 -0600
+
+    Initial commit

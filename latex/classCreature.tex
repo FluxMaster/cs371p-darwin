@@ -9,8 +9,6 @@
 \item 
 void \hyperlink{classCreature_a71fcba906866260a1172036d7074c2c3}{infect\-\_\-me} (\hyperlink{classSpecies}{Species} s)
 \item 
-char \hyperlink{classCreature_abede6ea489d2f9731b88e08923733ea2}{render} ()
-\item 
 {\footnotesize template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ }\\void \hyperlink{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}{take\-\_\-turn} (\hyperlink{classDarwin}{Darwin}$<$ N, M $>$ \&d, int position, int turn)
 \item 
 {\footnotesize template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ }\\void \hyperlink{classCreature_a597107fe6cc07e2bc31da65358eb5e45}{in\-\_\-front} (\hyperlink{classDarwin}{Darwin}$<$ N, M $>$ \&d, int position, \hyperlink{classCreature}{Creature} \&fnt)
@@ -24,6 +22,12 @@ bool \hyperlink{classCreature_aee075e42b38c6e82f8cb6ef652be4427}{real} ()
 
 \item 
 \hypertarget{classCreature_a15c054611a8f6d5592a276e7640544e3}{void {\bfseries print\-\_\-program} ()}\label{classCreature_a15c054611a8f6d5592a276e7640544e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCreature_ad78cde0b699968c6209eaa3979544a9c}{ostream \& {\bfseries operator$<$$<$} (ostream \&os, \hyperlink{classCreature}{Creature} \&c)}\label{classCreature_ad78cde0b699968c6209eaa3979544a9c}
 
 \end{DoxyCompactItemize}
 
@@ -67,14 +71,7 @@ This is how \hyperlink{classDarwin}{Darwin} infects creatures
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCreature_aee075e42b38c6e82f8cb6ef652be4427}
-This determines is the creature is \char`\"{}null\char`\"{} constructed returns a bool true\-: constructed false\-: \char`\"{}null\char`\"{} constructed \hypertarget{classCreature_abede6ea489d2f9731b88e08923733ea2}{\index{Creature@{Creature}!render@{render}}
-\index{render@{render}!Creature@{Creature}}
-\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}char Creature\-::render (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCreature_abede6ea489d2f9731b88e08923733ea2}
-This determines what character to print out returns a char representing the creature \hypertarget{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}{\index{Creature@{Creature}!take\-\_\-turn@{take\-\_\-turn}}
+This determines is the creature is \char`\"{}null\char`\"{} constructed returns a bool true\-: constructed false\-: \char`\"{}null\char`\"{} constructed \hypertarget{classCreature_a858a868dd6b1e1bc529fe3a58451bbba}{\index{Creature@{Creature}!take\-\_\-turn@{take\-\_\-turn}}
 \index{take\-\_\-turn@{take\-\_\-turn}!Creature@{Creature}}
 \subsubsection[{take\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\-::size\-\_\-t N, std\-::size\-\_\-t M$>$ void Creature\-::take\-\_\-turn (
 \begin{DoxyParamCaption}
